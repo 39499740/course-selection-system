@@ -57,6 +57,7 @@ async function createWindow() {
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       nodeIntegration: true,
       contextIsolation: false,
+      devTools:true
     },
   })
 
@@ -67,6 +68,7 @@ async function createWindow() {
   } else {
     win.loadFile(indexHtml)
   }
+  win.webContents.openDevTools(); // 打开调试窗口
 
   // Test actively push message to the Electron-Renderer
   win.webContents.on('did-finish-load', () => {
@@ -85,7 +87,8 @@ app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
   win = null
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
+  // if (process.platform !== 'darwin') app.quit()
 })
 
 app.on('second-instance', () => {

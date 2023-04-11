@@ -44,6 +44,7 @@ export interface TimeTableEntity {
     weekDay: string
     dateType: number // 1 上午 2 下午
     sessionId?: number
+    courseIndex?: number    //课程在一天中的第几节课
 }
 export interface SessionEntity{
     id?: number
@@ -74,7 +75,7 @@ export class COurseSelectionDexie extends Dexie{
             courseDB: '++id, name, type',
             resultDB: '++id, classId, teacherId, courseId, date',
             teacherDB: '++id, name, type',
-            timeTableDB: '++id, classId, teacherId, courseId, weekDay, dateType, sessionId',
+            timeTableDB: '++id, classId, teacherId, courseId, weekDay, dateType, sessionId, courseIndex',
             sessionDB: '++id, name, juniorAMCount, juniorPMCount, middleAMCount, middlePMCount, weekDay'
         });
     }

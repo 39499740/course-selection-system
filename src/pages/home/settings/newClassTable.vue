@@ -52,14 +52,15 @@ const emit = defineEmits(["confirm", "close"])
 // 判断年级是否已经存在
 const classIsExist = ref(false)
 const gradeChanged = async () => {
-  let classes: ClassEntity[] = await db.classDB.where("grade").equals(grade.value).toArray()
-  console.log(classes)
+
+  let classes: ClassEntity[] = await db.classDB.where("grade").equals(Number(grade.value)).toArray()
+
   if (classes.length > 0) {
     classIsExist.value = true
   } else {
     classIsExist.value = false
   }
-  console.log("11111")
+
 }
 
 const cancelBtnClicked = () => {
