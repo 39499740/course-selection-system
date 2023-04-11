@@ -3,6 +3,9 @@
     <div class="calenderRow">
       <Calender class="calender" v-model:selected-date="selectDate"/>
       <div class="dateInfoBox">
+          <div class="random">为下周选课<br>以当前选择日期为基准</div>
+
+
         <div class="date">{{ selectDate.getFullYear() }}年{{ selectDate.getMonth() }}月{{ selectDate.getDate() }}日&nbsp;&nbsp;{{
             selectDate.getDay() === 0 ? '星期日' : selectDate.getDay() === 1 ? '星期一' : selectDate.getDay() === 2 ? '星期二' : selectDate.getDay() === 3 ? '星期三' : selectDate.getDay() === 4 ? '星期四' : selectDate.getDay() === 5 ? '星期五' : '星期六'
           }}
@@ -66,6 +69,13 @@ onMounted(async () => {
     .dateInfoBox {
       width: 30%;
 
+      .random{
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        background: aquamarine;
+        border-radius: 2rem;
+        cursor:pointer;
+      }
 
       .date {
         font-size: 2.5rem;
